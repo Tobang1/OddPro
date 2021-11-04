@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">OddPro</string>
+
+    <string name="Home">Home</string>
+    <string name="Odd">ODD</string>
+    <string name="LiveScore">LiveScore</string>
+    <string name="Settings">Settings</string>
+    <string name="sure_odd">SURE ODD</string>
+</resources>

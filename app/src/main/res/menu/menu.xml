@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    // created menu for the navigation bar
+
+    <item
+        android:id="@+id/home"
+        android:title="@string/Home"
+        android:icon="@drawable/ic_baseline_home_24"/>
+    <item
+        android:id="@+id/Odd"
+        android:title="@string/Odd"
+        android:icon="@drawable/ic_baseline_category_24"/>
+    <item
+        android:id="@+id/LiveScore"
+        android:title="@string/LiveScore"
+        android:icon="@drawable/ic_baseline_sports_volleyball_24"/>
+    <item
+        android:id="@+id/Settings"
+        android:title="@string/Settings"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+
+</menu>
