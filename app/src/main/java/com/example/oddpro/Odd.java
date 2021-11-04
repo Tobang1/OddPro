@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class Odd extends AppCompatActivity {
 
+    // declare variables
     RecyclerView recyclerView;
     ArrayList<FreeOdd> freeOddArrayList;
     MyAdapter myAdapter;
@@ -90,6 +91,7 @@ public class Odd extends AppCompatActivity {
     }
 
     private void EventChangeListener() {
+        //db to fetch data from freeOdd and table freeHome, freeAway. League
         db.collection("freeOdd").orderBy("freeHome", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -100,7 +102,7 @@ public class Odd extends AppCompatActivity {
                             if (progressDialog.isShowing())
                                 progressDialog.dismiss();
 
-
+// error if not connecting to firestore
                             Log.e("firestore error", error.getMessage());
                             return;
                         }

@@ -20,7 +20,7 @@ public class LiveScore extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_score);
 
-
+// using webkit and webview for the livescore page
         webView = (WebView) findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://www.livescore.com");

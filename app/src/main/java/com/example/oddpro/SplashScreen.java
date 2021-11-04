@@ -8,7 +8,7 @@ import android.os.Handler;
 
 public class SplashScreen extends AppCompatActivity {
     Handler handler;
-
+// Helps to navigate to next activity after launch
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

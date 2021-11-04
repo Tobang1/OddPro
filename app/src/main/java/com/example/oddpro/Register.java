@@ -132,6 +132,9 @@ public class Register extends AppCompatActivity {
             });
         });
 
+
+       // already have account sent back to login page
+
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
