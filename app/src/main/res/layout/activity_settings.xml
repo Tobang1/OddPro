@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Settings">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logout"
+        android:layout_width="70dp"
+        android:background="@drawable/my_btn"
+        android:layout_height="28dp"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="4dp"
+        android:textColor="@color/white"
+        android:layout_marginRight="4dp"
+        android:onClick="logout"
+        android:text="Logout"
+        tools:ignore="UsingOnClickInXml" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

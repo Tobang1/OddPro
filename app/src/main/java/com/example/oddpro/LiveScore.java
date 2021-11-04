@@ -60,12 +60,12 @@ public class LiveScore extends AppCompatActivity {
         });
     }
 
-    @Override
+   /* @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
             webView.goBack();
         } else {
             super.onBackPressed();
         }
-    }
+    } */
 }
