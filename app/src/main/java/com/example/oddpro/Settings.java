@@ -2,12 +2,16 @@ package com.example.oddpro;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,8 +23,25 @@ public class Settings extends AppCompatActivity {
     //for the login button
     private FirebaseAuth FirebaseAuth;
 
+    SwitchCompat switchCompat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        //check condition
+        if (AppCompatDelegate.getDefaultNightMode()== AppCompatDelegate.MODE_NIGHT_YES){
+            //when night mode is equal to yes
+            //set dark mode
+
+            setTheme(R.style.Theme_Dark);
+        }else{
+            //when night mode is equal to No
+            //set light theme
+            setTheme(R.style.Theme_Light);
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -28,8 +49,35 @@ public class Settings extends AppCompatActivity {
         FirebaseAuth = FirebaseAuth.getInstance();
 
 
+        switchCompat = findViewById(R.id.switch1);
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.Settings);
+
+
+        //switch for dark mode
+
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //check condition
+                if (isChecked){
+                    //when switch button is checked
+                    //set night mode
+
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }else {
+                    //when switch button is unchecked
+                    //set light to day mode
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+
+
+            }
+        });
+
+
+
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

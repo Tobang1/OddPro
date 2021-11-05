@@ -6,5 +6,7 @@
     <string name="LiveScore">LiveScore</string>
     <string name="Settings">Settings</string>
     <string name="sure_odd">SURE ODD</string>
-    <string name="description">ODD PRO Never Loose Again</string>
+    <string name="General"><u>GENERAL</u></string>
+    <string name="Legal"><u>LEGAL</u></string>
+    <string name="description"><u>ODD PRO Never Loose Again </u></string>
 </resources>

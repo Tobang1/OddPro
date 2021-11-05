@@ -4,8 +4,342 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings">
+    android:background="?attr/background_color"
+    tools:context=".Settings"
+    >
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/bg1"
+            android:padding="20dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/logout"
+                android:layout_width="70dp"
+                android:layout_height="28dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/my_btn"
+                android:onClick="logout"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:ignore="UsingOnClickInXml" />
+
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_account_box_24" />
+
+            <TextView
+                android:id="@+id/MFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:capitalize="words"
+                android:includeFontPadding="false"
+                android:text="Akinola Joseph"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="Deprecated" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-100dp"
+            android:padding="20dp">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/greenlight"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_book_24" />
+
+                    <TextView
+                        android:id="@+id/payment_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+
+                        android:includeFontPadding="false"
+                        android:text="OUTLINE"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/payment_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/payment_label"
+
+                        android:layout_centerHorizontal="true"
+                        android:includeFontPadding="false"
+                        android:text="Overview"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/greenlight"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_support_agent_24"/>
+
+                    <TextView
+                        android:id="@+id/booking_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerInParent="true"
+                        android:includeFontPadding="false"
+                        android:text="CONTACT"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/booking_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/booking_label"
+                        android:layout_centerHorizontal="true"
+                        android:includeFontPadding="false"
+                        android:text="us"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scroll_content"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/background_color"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Account Profile"
+                android:textAllCaps="true"
+                android:textColor="?attr/text_color"
+                android:drawableRight="@drawable/ic_baseline_account_box_24"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="@string/General"
+                android:textAllCaps="true"
+                android:textColor="?attr/text_color"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:switchMinWidth="56dp"
+                android:text="DARK MODE"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="?attr/text_color" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rate Us"
+                android:paddingTop="3dp"
+                android:drawableRight="@drawable/ic_baseline_star_rate_24"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="?attr/text_color"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Share"
+                android:paddingTop="3dp"
+                android:drawableRight="@drawable/ic_baseline_share_24"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="?attr/text_color"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Country"
+                android:drawableRight="@drawable/ic_baseline_flag_24"
+                android:textStyle="bold"
+                android:paddingTop="3dp"
+                android:textSize="15dp"
+                android:textColor="?attr/text_color"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:paddingTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Legal"
+                android:textAllCaps="true"
+                android:textColor="?attr/text_color"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terms"
+                android:drawableRight="@drawable/ic_baseline_menu_book_24"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:paddingTop="3dp"
+                android:textColor="?attr/text_color"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Privacy"
+                android:drawableRight="@drawable/ic_baseline_privacy_tip_24"
+                android:textStyle="bold"
+                android:paddingTop="3dp"
+                android:textColor="?attr/text_color"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Disclamer"
+                android:drawableRight="@drawable/ic_baseline_priority_high_24"
+                android:textStyle="bold"
+                android:paddingTop="3dp"
+                android:textColor="?attr/text_color"/>
+
+        </LinearLayout>
+
+
+</ScrollView>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/scroll_content"
+    android:layout_alignParentBottom="true"
+    tools:ignore="NotSibling">
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottom_navigator"
+            app:itemBackground="@color/greenlight"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector2"
+            app:menu="@menu/menu"
+            android:layout_alignParentBottom="true"
+            />
+</RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logout"
         android:layout_width="70dp"
@@ -21,7 +355,6 @@
         android:text="Logout"
         tools:ignore="UsingOnClickInXml" />
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,4 +366,5 @@
         android:layout_alignParentBottom="true"
         />
 
-</RelativeLayout>
+-->
+
