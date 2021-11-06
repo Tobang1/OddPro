@@ -96,7 +96,7 @@
 
                         android:includeFontPadding="false"
                         android:text="OUTLINE"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/payment_label"
-
+                        android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
                         android:text="Overview"
@@ -141,7 +141,7 @@
                         android:layout_centerInParent="true"
                         android:includeFontPadding="false"
                         android:text="CONTACT"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -152,7 +152,8 @@
                         android:layout_below="@+id/booking_label"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
-                        android:text="us"
+                        android:text="US"
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
                 </RelativeLayout>
 
