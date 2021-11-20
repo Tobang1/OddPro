@@ -12,13 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.net.Inet4Address;
+
 public class Settings extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+
 
     //for the login button
     private FirebaseAuth FirebaseAuth;
@@ -54,6 +58,9 @@ public class Settings extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.Settings);
 
 
+
+
+
         //switch for dark mode
 
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -74,6 +81,7 @@ public class Settings extends AppCompatActivity {
 
             }
         });
+
 
 
 
@@ -107,12 +115,36 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        TextView textViewProfile = findViewById(R.id.account_profile);
+
+        textViewProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this,profile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
+
+
+
+
 // logout button onclick
     public void logout(View view) {
         FirebaseAuth.signOut();
         startActivity(new Intent(getApplicationContext(),Login.class));
         finish();
     }
+
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
+
+
+
+
 }
 

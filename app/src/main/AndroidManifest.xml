@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Light">
         <activity
+            android:name=".Subscribe"
+            android:exported="false" />
+        <activity
+            android:name=".Premium"
+            android:exported="false" />
+        <activity
             android:name=".profile"
             android:exported="false" />
         <activity

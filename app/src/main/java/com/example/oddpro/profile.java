@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
@@ -32,9 +34,11 @@ import com.squareup.picasso.Picasso;
 
 public class profile extends AppCompatActivity {
 
+    BottomNavigationView bottomNavigationView;
+
 
     //declare variable
-    TextView fullNames, mainName,email,phone;
+    TextView fullNames, mainName, email, phone;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     Button mUpdateBtn;
@@ -60,9 +64,42 @@ public class profile extends AppCompatActivity {
         imageUpload = findViewById(R.id.upload);
         gContact = findViewById(R.id.booking_label);
         gOutline = findViewById(R.id.payment_label);
+        mUpdateBtn = findViewById(R.id.btn_update);
 
 
         profileImage = findViewById(R.id.profile_image);
+
+        bottomNavigationView =findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.account_profile);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.Odd:
+                        startActivity(new Intent(getApplicationContext(), Odd.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.Settings:
+                        return true;
+
+                    case R.id.LiveScore:
+                        startActivity(new Intent(getApplicationContext(), Settings.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                //anything else is selected it should return false
+                return false;
+            }
+        });
+
+
+
 
 
         //connect to database
@@ -70,7 +107,7 @@ public class profile extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+        StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -85,7 +122,7 @@ public class profile extends AppCompatActivity {
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable  DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 phone.setText(documentSnapshot.getString("phone"));
                 email.setText(documentSnapshot.getString("email"));
                 mainName.setText(documentSnapshot.getString("fName"));
@@ -93,26 +130,30 @@ public class profile extends AppCompatActivity {
             }
         });
 
+        //upload image to database
+
         imageUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //open gallery
                 Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGalleryIntent,1000);
+                startActivityForResult(openGalleryIntent, 1000);
 
             }
         });
 
 
 
-
     }
 
+    //after on saved instance
+
+    //fetch data from database
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1000){
-            if (resultCode == Activity.RESULT_OK){
+        if (requestCode == 1000) {
+            if (resultCode == Activity.RESULT_OK) {
                 Uri imageUri = data.getData();
                 profileImage.setImageURI(imageUri);
 
@@ -123,9 +164,9 @@ public class profile extends AppCompatActivity {
 
     }
 
-    private void uploadImageToFirebase(Uri imageUri){
+    private void uploadImageToFirebase(Uri imageUri) {
         //upload image to firebase storage
-        StorageReference fileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+        StorageReference fileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -133,27 +174,24 @@ public class profile extends AppCompatActivity {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        // Picasso.get().load(uri).into(profileImage);
+                        Picasso.get().load(uri).into(profileImage);
                     }
                 });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(profile.this,"Failed to Upload Contact the Provider", Toast.LENGTH_SHORT).show();
-
-
+                Toast.makeText(profile.this, "Failed to Upload Contact the Provider", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    public void sign_out(View view) {
-        Snackbar.make(view, "Please go to main menu and logout", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
-
 
 }
 

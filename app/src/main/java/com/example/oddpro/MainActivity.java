@@ -18,17 +18,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageView imageViewPremium = findViewById(R.id.imagepremium);
+
         ImageView imageView = findViewById(R.id.imagefree);
 // set button selector
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.home);
-
+//free odd image onclick
         imageView.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this,Odd.class);
             startActivity(intent);
             finish();
 
         });
+
+//premium odd image onclick
+
+        imageViewPremium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Premium.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 // if button is selected for animation

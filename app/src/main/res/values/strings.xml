@@ -2,6 +2,7 @@
     <string name="app_name">OddPro</string>
 
     <string name="Home">Home</string>
+    <string name="Full_Name">Full Name</string>
     <string name="Odd">ODD</string>
     <string name="LiveScore">LiveScore</string>
     <string name="Settings">Settings</string>

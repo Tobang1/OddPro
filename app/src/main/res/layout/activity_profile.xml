@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C4DFC4"
     tools:context=".profile">
 
 
@@ -16,28 +17,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background=""
+
             android:padding="20dp">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/my_btn"
-                android:fontFamily=""
-                android:onClick="sign_out"
-                android:text="Logout"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
 
-            <ImageView
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_baseline_account_box_24" />
 
@@ -52,7 +40,7 @@
                 android:capitalize="words"
                 android:fontFamily=""
                 android:includeFontPadding="false"
-                android:text="Akinola Joseph"
+                android:text="@string/Full_Name"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
@@ -78,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-100dp"
+            android:background="#9DCA9D"
             android:padding="20dp">
 
             <com.google.android.material.card.MaterialCardView
@@ -85,7 +74,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#BEFFFFFF"
+                app:cardBackgroundColor="#99CC99"
                 >
 
 
@@ -153,13 +142,30 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_update"
-                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#9503A9F4"
+                android:background="@drawable/my_btn"
+                android:textColor="@color/white"
                 android:text="UPDATE" />
 
 
         </LinearLayout>
+
+
     </LinearLayout>
 
-</ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigator"
+        app:itemBackground="@color/greenlight"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector2"
+        app:menu="@menu/menu"
+        android:layout_alignParentBottom="true"
+        />
+
+
+
+</RelativeLayout>
